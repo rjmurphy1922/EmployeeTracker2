@@ -77,7 +77,7 @@ function addDepartment() {
         {
           name: "deptName",
           type: "input",
-          message: "What is the name of the department you want to add to the directory?"
+          message: "Please add Department Name?"
         },  
             ).then((res) => {
             db.insertDepartment(res);
