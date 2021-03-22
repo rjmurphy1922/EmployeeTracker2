@@ -1,32 +1,38 @@
+const sql = require ("sql-template-strings")
 const connection = require("./connection");
 
 module.exports = {
-    addDepartment(data) {
-        return connection.query("INSERT INTO DEPARTMENTS SET ?,", data );
+   
+    addToDepartments(res){
+
+     return connection.query(
+
+      "INSERT INTO DEPARTMENT SET ?,", res
+        );
     },
 
-    addRole(data) {
-        return connection.query("INSERT INTO ROLES SET ?,", data )
-    },
+    addToRole(res){
 
-    addEmployee(data) {
-        return connection.query("INSERT INTO EMPLOYEE SET ?,", data )
-    },
+        return connection.query(
+   
+         "INSERT INTO ROLES SET ?,", res
+           );
+        },
 
-    viewDepartments() {
-        return connection.query("SELECT * DEPARTMENTS")
-    },
 
-    viewEmployees() {
-        return connection.query("SELECT * FROM EMPLOYEE")
-    },
-
-    UpdateEmployees() {
-        return connection.query("UPDATE * EMPLOYEE SET ? WHERE ?")
-    },
-
-    UpdateRoles() {
-        return connection.query("UPDATE * EMPLOYEE SET ? WHERE ?")
+    addToEmployee(res) {
+        return connection.query(
+            "INSERT INTO EMPLOYEE SET ?", res
+        )
     },
     
+
+
+
+
+
+
+
+
+
 }
