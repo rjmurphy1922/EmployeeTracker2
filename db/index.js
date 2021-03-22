@@ -4,7 +4,7 @@ const connection = require("./connection");
 module.exports = {
    
    
-    getEmployee(res) {
+    getDepartment(res) {
         return connection.query(
             "SELECT * DEPARTMENT", res
         )
@@ -20,7 +20,7 @@ module.exports = {
     getEmployees(res) {
         return connection.query(
             //JOIN??
-            "SELECT e.ID, e.FIRST_NAME, e.LAST_NAME, r.TITLE as TITLE FROM EMPLOYEE e INNER JOIN ROLES r ON e.ROLE_ID =r.ROLE_ID; ", res
+            "SELECT e.ID, e.FIRST_NAME, e.LAST_NAME, r.TITLE as TITLE FROM EMPLOYEE e INNER JOIN ROLES r ON e.ROLE_ID =r.ROLE_ID ", res
         )
     },
    

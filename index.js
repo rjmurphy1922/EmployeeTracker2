@@ -1,7 +1,7 @@
 const inquirer = require ("inquirer");
 const db = require ("./db/index")
-// const connection = require ("./db/connection")
-// const mysql = require("mysql")
+const connection = require ("./db/connection")
+const mysql = require("mysql")
 
 function roleSelection(){
 
@@ -37,7 +37,7 @@ function roleSelection(){
             break;
 
             case "Add Employee":
-            addEmployee();
+            addEmployees();
             break;
 
             case "Add Salary":
@@ -75,41 +75,65 @@ roleSelection()
 function addDepartment() {
     inquirer.prompt(
         {
-          name: "deptName",
-          type: "input",
-          message: "Please add Department Name?"
+            type: "input",
+            name: "deptName",
+            message: "Please add Department Name?"
         },  
             ).then((res) => {
-            db.insertDepartment(res);
+            db.addToDepartments(res);
             console.log("Department Added");
             nextSelection();
         });
- }}
+ }
 
  function addRole(){
 
     db.getDepartment()
-    .then((departments)) => {
+    .then((departments) => {
+
+        db.getDepartment()
+        .then((departments) => {
+            const deptChoice = departments.map((department) => ({
+
+                value: department.id,
+                name:department.departments
+            }))
 
 
-    }
- }
+            inquirer
+                .prompt([
+                    {
 
- function addEmployee()
+                        type: "input",
+                        name: "title",
+                        message: "What is the role's title?",
+                      
+                    },
+                    {
 
-    db.getRole()
-    .then((roles)=>{
+                        type: "input",
+                        name: "salary",
+                        message: "What is the role's salary?",
+                    
+                    },
+    
+                    {
+                        type: "list",
+                        name: "department_id",
+                        message: "What department is this role for?",
+                        choices: deptChoices  
+                    }
+            ])
+        .then((res) =>{
+        const newRole= {
+            title: res.title,
+            salary: res.salary,
+            department_ID: results.department_id
+        }
 
-        const roleChoice = roles.map((role)=>({
-
-            value: role.id,
-            name: role.title
-        }))})
-
-        db.getEmployee()
-        .then((manager) => {
-            const managerChoice = manager.map((manager) =>({
-                value: manager.id,
-                // name: role.title
-            })
-            )})
+        db.addToRole(newRole);
+        console.log("New Role Added");
+        nextSelection()
+            
+    })}
+        )})}

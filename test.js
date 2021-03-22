@@ -158,3 +158,23 @@ function addDepartment(){
 
 }
 
+
+        
+//  function addEmployees()
+
+//     db.getRoles()
+//     .then((roles)=>{
+
+//         const roleChoice = roles.map((role)=>({
+
+//             value: role.id,
+//             name: role.title
+//         }))})
+
+//         db.getEmployee()
+//         .then((manager) => {
+//             const managerChoice = manager.map((manager) =>({
+//                 value: manager.id,
+//                 // name: role.title
+//             })
+//             )})})})})}
