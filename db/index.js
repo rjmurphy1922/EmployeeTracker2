@@ -29,7 +29,7 @@ module.exports = {
 
      return connection.query(
 
-      "INSERT INTO DEPARTMENT SET ?,", res
+      "INSERT INTO DEPARTMENTS SET ?", res
         );
     },
 

@@ -3,12 +3,12 @@ const db = require ("./db/index")
 const connection = require ("./db/connection")
 const mysql = require("mysql")
 
-function roleSelection(){
+function nextSelection(){
 
     inquirer
     .prompt({
         type: "list",
-        name:"github",
+        name:"selection",
         message: "Please make a selection from the options below",
         choices:[
             "Add Department",
@@ -26,8 +26,9 @@ function roleSelection(){
     })
 
     .then((res) => {
-        // res.action
-        switch(res) {
+        console.log(res)
+        switch(res.selection)
+          {
             case "Add Department":
             addDepartment();
             break;
@@ -66,17 +67,18 @@ function roleSelection(){
 
 
 
+
 };
 
 
-roleSelection()
+// roleSelection()
 
 
 function addDepartment() {
     inquirer.prompt(
         {
             type: "input",
-            name: "deptName",
+            name: "DEPARTMENT_NAME",
             message: "Please add Department Name?"
         },  
             ).then((res) => {
@@ -88,8 +90,8 @@ function addDepartment() {
 
  function addRole(){
 
-    db.getDepartment()
-    .then((departments) => {
+    // db.getDepartment()
+    // .then((departments) => {
 
         db.getDepartment()
         .then((departments) => {
@@ -110,7 +112,6 @@ function addDepartment() {
                       
                     },
                     {
-
                         type: "input",
                         name: "salary",
                         message: "What is the role's salary?",
@@ -136,4 +137,5 @@ function addDepartment() {
         nextSelection()
             
     })}
-        )})}
+        )}
+nextSelection()
