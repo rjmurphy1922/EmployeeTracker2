@@ -41,9 +41,9 @@ function nextSelection(){
             addEmployees();
             break;
 
-            case "Add Salary":
-            addSalary();
-            break;
+            // case "Add Salary":
+            // addSalary();
+            // break;
 
             case "View Departments":
             viewDepartment();
@@ -160,13 +160,7 @@ function addDepartment() {
                         name: role.TITLE,
                     }));
         
-                // db.getEmployees()
-                //     .then((managers) => {
-        
-                //         const manager = managers.map((manager) => ({
-                //             value: manager.MANAGER_ID,
-                //             name: manager.FIRST_NAME + " " + manager.LAST_NAME
-                //         }))
+     
         
                 inquirer
                     .prompt([
@@ -192,21 +186,14 @@ function addDepartment() {
                             choices: roleChoice 
 
                         },
-                        // {
-
-                        //     type: "list",
-                        //     name: "MANAGER_ID",
-                        //     message: "Please Enter Employee's Manager?",
-                        //     choices: manager 
-
-                        // }
+            
                     ]).then((results) => {
                         const newEmployee = {
 
                             first_name: results.FIRST_NAME,
                             last_name: results.LAST_NAME,
                             role_id: results.ROLE_ID,
-                            // manager_id: results.MANAGER_ID
+        
 
                         }
 
