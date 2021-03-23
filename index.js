@@ -16,7 +16,7 @@ function nextSelection(){
             "Add Employee",
             "Add Salary",
             "View Departments",
-            "View Roles",
+            "View Role",
             "View Employee",
             "Update Employee",
             "Update Role"
@@ -51,6 +51,10 @@ function nextSelection(){
 
             case "View Employee":
             viewEmployee();
+            break;
+
+            case "View Role":
+            viewRoles();
             break;
 
             case "Update Employee":
@@ -208,26 +212,38 @@ function addDepartment() {
                 })
         }
 
-        function viewDepartment() {
-
-            db.getDepartment()
+            function viewDepartment() {
+                 db.getDepartment()
                 .then((department) => {
                 console.table(department);
-                    nextSelection();
+                nextSelection();
                 })
         
         }
 
      
-        function viewEmployee(){
-        db.getEmployees()
+            function viewEmployee(){
+                 db.getEmployees()
                 .then((employee) =>{
                 console.table(employee)
                 nextSelection()
                 })
 
       
-        }
+                
+            }
+
+            function viewRoles(){
+                  db.getRoles()
+                 .then((role) =>{
+                 console.table(role)
+                 nextSelection()
+                        })
+        
+              
+                        
+                    }
+
 
 
 nextSelection()
