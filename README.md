@@ -30,7 +30,7 @@
   ## Technologiess
   Javascript, Mysql, Node
 
-  ![alt text](https://github.com/rjmurphy1922/EmployeeTracker2/blob/main/commandlineimage.PNG?raw=true)
+  ![alt text](https://github.com/rjmurphy1922/EmployeeTracker2/blob/main/commandlineimage?raw=true)
 
    ## Questions
 
