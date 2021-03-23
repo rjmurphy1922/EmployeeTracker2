@@ -147,8 +147,7 @@ function addDepartment() {
                         name: role.TITLE,
                     }));
         
-                db
-                    .getEmployees()
+                db.getEmployees()
                     .then((managers) => {
         
                         const manager = managers.map((manager) => ({
@@ -208,6 +207,9 @@ function addDepartment() {
                 
                 })
         }
+
+
+      
 
 
 
