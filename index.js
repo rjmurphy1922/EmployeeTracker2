@@ -208,6 +208,16 @@ function addDepartment() {
                 })
         }
 
+        function viewDepartment() {
+
+            db.getDepartment()
+            .then((department) => {
+            console.table(department);
+            nextSelection();
+                })
+        
+        }
+
 
       
 
