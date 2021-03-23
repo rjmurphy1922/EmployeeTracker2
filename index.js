@@ -94,7 +94,7 @@ function addDepartment() {
 
     db.getDepartment()
     .then((departments) => {
-        const departmentChoices = departments.map((department) => ({
+        const deptChoices = departments.map((department) => ({
             value: department.id,
             name: department.department
         }))
@@ -120,7 +120,7 @@ function addDepartment() {
                         type: "list",
                         name: "DEPARTMENT_ID",
                         message: "Please add department this role is part of?",
-                        choices: departmentChoices  
+                        choices: deptChoices  
                     }
             ])
         .then((res) =>{
@@ -136,4 +136,79 @@ function addDepartment() {
             
     })}
         )}
+
+        function addEmployees() {
+
+            db.getRoles()
+                .then((roles) => {
+        
+                    const roleChoice = roles.map((role) => ({
+                        value: role.ROLE_ID,
+                        name: role.TITLE,
+                    }));
+        
+                db
+                    .getEmployees()
+                    .then((managers) => {
+        
+                        const manager = managers.map((manager) => ({
+                            value: manager.MANAGER_ID,
+                            name: manager.FIRST_NAME + " " + manager.LAST_NAME
+                        }))
+        
+                inquirer
+                    .prompt([
+                        {
+
+                            type: "input",
+                            name: "FIRST_NAME",
+                            message: "Please Enter Employee's First Name?",
+
+                        },
+                        {
+
+                            type: "input",
+                            name: "LAST_NAME",
+                            message: "Please Enter Employee's Last Name?"
+
+                        },
+                        {
+
+                            type: "list",
+                            name: "ROLE_ID",
+                            message: "Please Enter Employee's Role?",
+                            choices: roleChoice 
+
+                        },
+                        {
+
+                            type: "list",
+                            name: "MANAGER_ID",
+                            message: "Please Enter Employee's Manager?",
+                            choices: manager 
+
+                        }
+                    ]).then((results) => {
+                        const newEmployee = {
+
+                            first_name: results.FIRST_NAME,
+                            last_name: results.LAST_NAME,
+                            role_id: results.ROLE_ID,
+                            manager_id: results.MANAGER_ID
+
+                        }
+
+                        db.addToEmployee(newEmployee);
+                        console.log("Employee Added");
+                            nextAction();
+            
+                        });
+                    
+                    })
+                
+                })
+        }
+
+
+
 nextSelection()
