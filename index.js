@@ -57,9 +57,9 @@ function nextSelection(){
             viewRoles();
             break;
 
-            case "Update Employee":
-            updateEmployee();
-            break;
+            // case "Update Employee":
+            // updateEmployee();
+            // break;
 
             case "Update Role":
             updateRole();
@@ -99,13 +99,21 @@ function addDepartment() {
     db.getDepartment()
     .then((departments) => {
         const deptChoices = departments.map((department) => ({
-            value: department.id,
-            name: department.department
+            value: department.DEPARTMENT_ID,
+            name: department.DEPARTMENT_NAME 
         }))
 
 
             inquirer
                 .prompt([
+
+                    {
+
+                        type: "input",
+                        name: "ROLE_ID",
+                        message: "Please add role's ID",
+                      
+                    },
                     {
 
                         type: "input",
@@ -129,9 +137,10 @@ function addDepartment() {
             ])
         .then((res) =>{
         const newRole= {
+            role_id: res.ROLE_ID,
             title: res.TITLE,
-            salary: res.SALRY,
-            department_ID: results.DEPARTMENT_ID
+            salary: res.SALARY,
+            department_ID: res.DEPARTMENT_ID
         }
 
         db.addToRole(newRole);
