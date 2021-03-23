@@ -211,16 +211,23 @@ function addDepartment() {
         function viewDepartment() {
 
             db.getDepartment()
-            .then((department) => {
-            console.table(department);
-            nextSelection();
+                .then((department) => {
+                console.table(department);
+                    nextSelection();
                 })
         
         }
 
+     
+        function viewEmployee(){
+        db.getEmployees()
+                .then((employee) =>{
+                console.table(employee)
+                nextSelection()
+                })
 
       
-
+        }
 
 
 nextSelection()
