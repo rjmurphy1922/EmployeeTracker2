@@ -51,10 +51,10 @@ module.exports = {
         },
 
 
-    addToEmployee(res) {
-        return connection.query(
-            "INSERT INTO EMPLOYEE SET ?", res
-        )
+        addToEmployee(res) {
+            return connection.query(
+                "INSERT INTO EMPLOYEE SET ?", res
+            );
     },
 
 

@@ -245,5 +245,52 @@ function addDepartment() {
                     }
 
 
+                    function updateRole() {
+
+                        db
+                            .getRoles()
+                            .then((roles) => {
+                    
+                                const roleChoice = roles.map((role) => ({
+                                    value: role.ROLE_ID,
+                                    name: role.TITLE,
+                                }));
+                    
+                            db
+                                .getEmployees()
+                                .then((employees) => {
+                    
+                                    const employeeChoice = employees.map((employee) => ({
+                                        value: employee.id,
+                                        name: employee.first_name + " " + employee.last_name
+                                    }));
+                    
+                            inquirer
+                                .prompt([
+                                    {
+                                        type: "list",
+                                        name: "EMPLOYEE_ID",
+                                        message: "Please Select Employee to Update?",
+                                        choices: employeeChoice
+                                    },
+                                    {
+                                        type: "list",
+                                        name: "role_id",
+                                        message: "Please Add Employee's New Role",
+                                        choices: roleChoice
+                                    }
+                                ]).then((results) => {
+                    
+                                    db.updateEmployeeRole(results);
+                                    console.log("Succesfully Updated Role.")
+                                    askForAction();
+                                });
+                            
+                            });
+                            
+                        });
+                    }
+
+
 
 nextSelection()
