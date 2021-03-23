@@ -6,7 +6,7 @@ module.exports = {
    
     getDepartment(res) {
         return connection.query(
-            "SELECT * DEPARTMENT", res
+            "SELECT * FROM DEPARTMENTS", res
         )
     },
    
@@ -33,13 +33,23 @@ module.exports = {
         );
     },
 
-    addToRole(res){
+    // addToRole(res){
 
-        return connection.query(
+    //     return connection.query(
    
-         "INSERT INTO ROLES SET ?,", res
-           );
+    //      "INSERT INTO ROLES SET ?", res
+    //        );
+    //     },
+
+        addToRole(res) {
+            return connection.query(
+                "INSERT INTO ROLES SET ?", res
+            );
         },
+        //-------------------------------------
+
+
+        //-----------------------------------
 
 
     addToEmployee(res) {

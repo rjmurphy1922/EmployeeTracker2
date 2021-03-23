@@ -90,16 +90,14 @@ function addDepartment() {
 
  function addRole(){
 
-    // db.getDepartment()
-    // .then((departments) => {
 
-        db.getDepartment()
-        .then((departments) => {
-            const deptChoice = departments.map((department) => ({
 
-                value: department.id,
-                name:department.departments
-            }))
+    db.getDepartment()
+    .then((departments) => {
+        const departmentChoices = departments.map((department) => ({
+            value: department.id,
+            name: department.department
+        }))
 
 
             inquirer
@@ -107,29 +105,29 @@ function addDepartment() {
                     {
 
                         type: "input",
-                        name: "title",
-                        message: "What is the role's title?",
+                        name: "TITLE",
+                        message: "Please add role's Title",
                       
                     },
                     {
                         type: "input",
-                        name: "salary",
-                        message: "What is the role's salary?",
+                        name: "SALARY",
+                        message: "Please add Role's Salary",
                     
                     },
     
                     {
                         type: "list",
-                        name: "department_id",
-                        message: "What department is this role for?",
-                        choices: deptChoices  
+                        name: "DEPARTMENT_ID",
+                        message: "Please add department this role is part of?",
+                        choices: departmentChoices  
                     }
             ])
         .then((res) =>{
         const newRole= {
-            title: res.title,
-            salary: res.salary,
-            department_ID: results.department_id
+            title: res.TITLE,
+            salary: res.SALRY,
+            department_ID: results.DEPARTMENT_ID
         }
 
         db.addToRole(newRole);
